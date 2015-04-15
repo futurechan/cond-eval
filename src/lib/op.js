@@ -72,10 +72,17 @@ module.exports.OR = {
 module.exports.CONTAINS = {
 	match: function(op){ return op.toUpperCase() == 'CONTAINS' || op == '[]'; },
 	eval: function(l, r, evaluator){
-        console.log("evaluating l", l);
         l = evaluator.evaluate(l);
-        console.log("evaluating r", r);
         r = evaluator.evaluate(r)
         return l.indexOf(r) > -1;
 	}
+}
+
+module.exports.NOT_CONTAINS = {
+    match: function(op){ return op.toUpperCase() == 'NOT_CONTAINS' || op == '![]'; },
+    eval: function(l, r, evaluator){
+        l = evaluator.evaluate(l);
+        r = evaluator.evaluate(r)
+        return l.indexOf(r) == -1;
+    }
 }
