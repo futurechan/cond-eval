@@ -72,6 +72,10 @@ module.exports.OR = {
 module.exports.CONTAINS = {
 	match: function(op){ return op.toUpperCase() == 'CONTAINS' || op == '[]'; },
 	eval: function(l, r, evaluator){
-        return evaluator.evaluate(l).indexOf(evaluator.evaluate(r)) > -1;
+        console.log("evaluating l", l);
+        l = evaluator.evaluate(l);
+        console.log("evaluating r", r);
+        r = evaluator.evaluate(r)
+        return l.indexOf(r) > -1;
 	}
 }

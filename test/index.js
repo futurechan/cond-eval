@@ -85,5 +85,19 @@ describe('index', function(){
 		
 		expect(sut(ctx, t1)).to.be.true;
 		expect(sut(ctx, t2)).to.be.false;
+
+        var t3 = {
+            "conditions": [
+                {
+                    "leftOperand": "result.offersExtendedHours",
+                    "comparison": "[]",
+                    "rightOperand": "Extended Hours"
+                }
+            ]
+        }
+
+        ctx = {"result":{"offersExtendedHours":["Extended Hours"]}}
+
+        expect(sut(ctx, t3)).to.be.true;
 	})
 })

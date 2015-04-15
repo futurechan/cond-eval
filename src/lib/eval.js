@@ -12,28 +12,30 @@ module.exports = function(ctx){
 			cond = helper.reduceArray(cond, op, self);
 		})
 		
-		return evalSingle(cond[0]);		
+		return evalSingle(cond[0]);
 	}
 
 	function evalSingle(cond){
+
 		if(cond.value !== undefined) return cond.value;
 
-		if(cond.conditions && cond.conditions.constructor === Array)
-			return evalArray(cond.conditions);
-		
-		var l = helper.getFromCtx(cond.leftOperand, ctx) || cond.leftOperand;
-		var r = helper.getFromCtx(cond.rightOperand, ctx) || cond.rightOperand;
+        var l = helper.getFromCtx(cond.leftOperand, ctx) || cond.leftOperand;
+        var r = helper.getFromCtx(cond.rightOperand, ctx) || cond.rightOperand;
 
-		var op = helper.getComparator(cond.comparison);
+        var op = helper.getComparator(cond.comparison);
 
-		return op.eval(l,r, self);
+        return op.eval(l,r, self);
 	}
 
 	self.evaluate = function(cond){
 		if(cond.value !== undefined) return cond.value;
-		
-		return typeof cond  == "object"
-				? evalSingle(cond)
-				: cond;
+
+		if(cond.conditions && cond.conditions.constructor === Array)
+            return evalArray(cond.conditions);
+
+        if(cond.leftOperand && cond.rightOperand && cond.comparison)
+            return evalSingle(cond)
+
+        return cond;
 	}
 }
