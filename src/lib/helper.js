@@ -1,5 +1,5 @@
 var op = require('./op')
-	, compOps = [op.GT, op.GTE, op.LT, op.LTE, op.EQ, op.NEQ]
+	, compOps = [op.GT, op.GTE, op.LT, op.LTE, op.EQ, op.NEQ, op.CONTAINS]
 ;
 
 module.exports.reduceArray = function(conditions, op, evaluator){
