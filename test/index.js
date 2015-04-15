@@ -25,54 +25,58 @@ describe('index', function(){
 	
 	it('should work for trees', function(){
 
-		var t1 = [
-			{
-				"leftOperand":"this",
-				"comparison":"=",
-				"rightOperand":"yes"
-			},
-			{
-				"bool":"AND",
-				"conditions":[
-					{
-						"leftOperand":"blah",
-						"comparison":"=",
-						"rightOperand":"yah"
-					},
-					{
-						"bool":"OR",
-						"leftOperand":"foh",
-						"comparison":"=",
-						"rightOperand":"meh"
-					}
-				]
-			}
-		]
+		var t1 = {
+			conditions:[
+                {
+                    "leftOperand":"this",
+                    "comparison":"=",
+                    "rightOperand":"yes"
+                },
+                {
+                    "bool":"AND",
+                    "conditions":[
+                        {
+                            "leftOperand":"blah",
+                            "comparison":"=",
+                            "rightOperand":"yah"
+                        },
+                        {
+                            "bool":"OR",
+                            "leftOperand":"foh",
+                            "comparison":"=",
+                            "rightOperand":"meh"
+                        }
+                    ]
+                }
+            ]
+		}
 
-		var t2 = [
-			{
-				"leftOperand":"this",
-				"comparison":"=",
-				"rightOperand":"nay"
-			},
-			{
-				"bool":"AND",
-				"conditions":[
-					{
-						"leftOperand":"blah",
-						"comparison":"=",
-						"rightOperand":"yah"
-					},
-					{
-						"bool":"OR",
-						"leftOperand":"foh",
-						"comparison":"=",
-						"rightOperand":"no"
-					}
-				]
-			}
-		]
-		
+		var t2 = {
+            conditions:[
+                {
+                    "leftOperand":"this",
+                    "comparison":"=",
+                    "rightOperand":"nay"
+                },
+                {
+                    "bool":"AND",
+                    "conditions":[
+                        {
+                            "leftOperand":"blah",
+                            "comparison":"=",
+                            "rightOperand":"yah"
+                        },
+                        {
+                            "bool":"OR",
+                            "leftOperand":"foh",
+                            "comparison":"=",
+                            "rightOperand":"no"
+                        }
+                    ]
+                }
+            ]
+        }
+
 		var ctx = {
 			"this": "yes",
 			"blah": "yah",

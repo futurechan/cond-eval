@@ -32,9 +32,7 @@ module.exports = function(ctx){
 	self.evaluate = function(cond){
 		if(cond.value !== undefined) return cond.value;
 		
-		return (cond.constructor === Array)
-			? evalArray(cond)
-			: typeof cond  == "object" 
+		return typeof cond  == "object"
 				? evalSingle(cond)
 				: cond;
 	}
