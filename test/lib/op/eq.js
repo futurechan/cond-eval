@@ -67,6 +67,15 @@ describe('EQ', function(){
 			
 			expect(sut.eval({}, {}, evaluator)).to.be.false;
 		})
+
+		it('should support set equality between an array and a string', function(){
+
+            var evaluator = {
+                evaluate: function(operand) { return operand}
+            }
+
+            expect(sut.eval(['hi'], 'hi', evaluator)).to.be.true;
+        })
 	})
 	
 })

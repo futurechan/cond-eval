@@ -68,3 +68,10 @@ module.exports.OR = {
 		return evaluator.evaluate(l) || evaluator.evaluate(r);
 	}
 }
+
+module.exports.CONTAINS = {
+	match: function(op){ return op.toUpperCase() == 'CONTAINS' || op == '[]'; },
+	eval: function(l, r, evaluator){
+        return evaluator.evaluate(l).indexOf(evaluator.evaluate(r)) > -1;
+	}
+}
